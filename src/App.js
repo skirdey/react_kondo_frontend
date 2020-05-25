@@ -1,18 +1,61 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          fieldA: '',
+          fieldB: ''
+        };
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmission = this.handleSubmission.bind(this);
+    }
+
+    handleInputChange = (event, field) => {
+        let inputValue = event.target.value;
+
+        this.setState((prevState, props) => {
+            if(field === "fieldA") {
+                return { fieldA: inputValue }
+            } else {
+                return { fieldB: inputValue }
+            }
+        });
+    };
+
+    handleSubmission = event => {
+        event.preventDefault();
+        this.setState((prevState, props) => {
+            return { fieldA: '', fieldB: '' }
+        });
+    };
+
   render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      const { fieldA, fieldB } = this.state;
+
+      return (
+      <div className="kondo-playground">
+        kondo-playground
+        <form>
+          <input
+              type="text"
+              value={ fieldA }
+              onChange={ event => this.handleInputChange(event, "fieldA") }
+          />
+          <input
+              type="text"
+              value={ fieldB }
+              onChange={ event => this.handleInputChange(event, "fieldB") }
+          />
+          <button
+              onClick={ this.handleSubmission }
+          >
+            search
+          </button>
+        </form>
       </div>
     );
   }
