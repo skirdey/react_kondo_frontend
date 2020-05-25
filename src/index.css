@@ -1,5 +1,54 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: monospace;
+  font-size: 14px;
+  background-color: #222;
+  color: lightgray;
+}
+
+#content {
+  padding: 5em 0;
+}
+
+.terminal {
+  border: solid 1px white;
+  padding: 4em 2em;
+}
+
+.response {
+}
+
+form {
+  margin: 3em 0;
+}
+
+h5 {
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: white;
+}
+
+button, input {
+  text-transform: lowercase;
+  font-size: 100%;
+  margin: 10px 0;
+  opacity: .9;
+}
+
+.form-control:focus,
+.form-control:active,
+.form-control:hover,
+.btn:focus,
+.btn:active,
+.btn:hover {
+  outline: 0;
+  box-shadow: 0 0 0;
+  border-color: white;
+}
+
+code {
+  font-family: monospace;
+  color: lightgray;
 }
