@@ -42,46 +42,61 @@ class App extends Component {
       <Container fluid>
           <Container id="content">
               <Row>
-                  <Col md={{ span: 6, offset: 3 }} className="terminal">
-                      <h5>Kondo Playground</h5>
-                      <p>
-                          go ahead, enter two sentences and we'll run it through kondo api so you can see the magic happen
-                      </p>
-                      <Form>
-                          <Form.Control
-                              type="text"
-                              value={ fieldA }
-                              onChange={ event => this.handleInputChange(event, "fieldA") }
-                              autocapitalize="off"
-                              autocomplete="off"
-                              spellcheck="false"
-                              autocorrect="off"
-                          />
-                          <Form.Control
-                              type="text"
-                              value={ fieldB }
-                              onChange={ event => this.handleInputChange(event, "fieldB") }
-                              autocapitalize="off"
-                              autocomplete="off"
-                              spellcheck="false"
-                              autocorrect="off"
-                          />
-                          <Button
-                              block
-                              variant="outline-light"
-                              onClick={ this.handleSubmission }
-                          ><small>&#36;</small> run kondo search</Button>
-                      </Form>
-                      <div className="response">
-                          <code>
-                              &#123;
-                              "sentence_meta"&#58; &#123;<br/>
-                              "angle"&#58; 42.93550485861645,<br/>
-                              "levenshtein_distance"&#58; 8.0,<br/>
-                              "same_bucket"&#58; true<br/>
-                              &#125;
-                              &#125;
-                          </code>
+                  <Col md={{ span: 6, offset: 3 }} className="terminal-window">
+                      <div className="header">
+                          <div className="button green">&nbsp;</div>
+                          <div className="button yellow">&nbsp;</div>
+                          <div className="button red">&nbsp;</div>
+                      </div>
+                      <div className="terminal">
+                          <div className="title">
+                              <p className="highlight">
+                                  Welcome to Kondo Playground
+                              </p>
+                              <p className="content">
+
+                                  enter two sentences and we'll run it through <br/>
+                                  &#60;kondo-api&#62; so you can see the magic happen
+                              </p>
+                          </div>
+                          <Form>
+                              <Form.Control
+                                  type="text"
+                                  placeholder="&#36; enter a sentence"
+                                  value={ fieldA }
+                                  onChange={ event => this.handleInputChange(event, "fieldA") }
+                                  autoCapitalize="off"
+                                  autoComplete="off"
+                                  spellCheck="false"
+                                  autoCorrect="off"
+                              />
+                              <Form.Control
+                                  type="text"
+                                  placeholder="&#36; enter another sentence"
+                                  value={ fieldB }
+                                  onChange={ event => this.handleInputChange(event, "fieldB") }
+                                  autoCapitalize="off"
+                                  autoComplete="off"
+                                  spellCheck="false"
+                                  autoCorrect="off"
+                              />
+                              <Button
+                                  block
+                                  variant="outline-light"
+                                  onClick={ this.handleSubmission }
+                              >&#36; kondo-search run</Button>
+                          </Form>
+                          <div className="response">
+                              <code>
+                                  &#123;
+                                  "sentence_meta"&#58; &#123;<br/>
+                                  "angle"&#58; 42.93550485861645,<br/>
+                                  "levenshtein_distance"&#58; 8.0,<br/>
+                                  "same_bucket"&#58; true<br/>
+                                  &#125;
+                                  &#125;
+                              </code>
+                          </div>
                       </div>
                   </Col>
               </Row>
