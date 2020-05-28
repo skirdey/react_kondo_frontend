@@ -10,6 +10,7 @@ class App extends Component {
         this.state = {
           fieldA: '',
           fieldB: '',
+          response: ''
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -28,15 +29,33 @@ class App extends Component {
         });
     }
 
+    fetchAPI = (fieldA, fieldB) => {
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                "sentence_one": fieldA,
+                "sentence_two": fieldB
+            })
+        };
+        fetch('https://semanticsearchatscale.dmz.netflix.net/compare', requestOptions)
+            .then(response => response.json())
+            .catch(error => console.log(error))
+    }
+
     handleSubmission = event => {
         event.preventDefault();
         this.setState((prevState, props) => {
             return { fieldA: '', fieldB: '' }
         });
+
+        this.fetchAPI(this.state.fieldA, this.state.fieldB).then(result => {
+            this.setState({ response: result });
+        });
     }
 
   render() {
-      const { fieldA, fieldB } = this.state;
+      const { fieldA, fieldB, response } = this.state;
 
       return (
       <Container fluid>
@@ -87,15 +106,7 @@ class App extends Component {
                               >&#36; kondo-search run</Button>
                           </Form>
                           <div className="response">
-                              <code>
-                                  &#123;
-                                  "sentence_meta"&#58; &#123;<br/>
-                                  "angle"&#58; 42.93550485861645,<br/>
-                                  "levenshtein_distance"&#58; 8.0,<br/>
-                                  "same_bucket"&#58; true<br/>
-                                  &#125;
-                                  &#125;
-                              </code>
+                              { response }
                           </div>
                       </div>
                   </Col>
