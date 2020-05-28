@@ -38,9 +38,7 @@ class App extends Component {
                 "sentence_two": fieldB
             })
         };
-        fetch('https://semanticsearchatscale.dmz.netflix.net/compare', requestOptions)
-            .then(response => response.json())
-            .catch(error => console.log(error))
+        return fetch('https://semanticsearchatscale.dmz.netflix.net/compare', requestOptions);
     }
 
     handleSubmission = event => {
@@ -48,10 +46,10 @@ class App extends Component {
         this.setState((prevState, props) => {
             return { fieldA: '', fieldB: '' }
         });
-
-        this.fetchAPI(this.state.fieldA, this.state.fieldB).then(result => {
-            this.setState({ response: result });
-        });
+        this.fetchAPI(this.state.fieldA, this.state.fieldB)
+            .then(response => response.json())
+            .then(result => {this.setState({ response: JSON.stringify(result) })})
+            .catch(error => console.log(error))
     }
 
   render() {
