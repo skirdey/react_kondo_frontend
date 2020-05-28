@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 function Response(props) {
 
@@ -7,14 +7,17 @@ function Response(props) {
             <p>{ props.response.error }</p>
         );
     } else {
+        const { outputA, outputB } = props
         const { sentence_meta } = props.response;
-        const { angle, count, levenshtein_distance, same_bucket } = sentence_meta;
+        const { angle, levenshtein_distance, same_bucket } = sentence_meta;
 
         return (
             <div>
+                <p>sentence_one: { outputA }</p>
+                <p>sentence_two: { outputB }</p>
+
                 <ul className="response">
                     <li>angle: <span>{ angle }</span></li>
-                    <li>count: <span>{ count }</span></li>
                     <li>levenshtein_distance: <span>{ levenshtein_distance }</span></li>
                     <li>same_bucket: <span>{ JSON.stringify(same_bucket) }</span></li>
                 </ul>

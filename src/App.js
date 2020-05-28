@@ -11,6 +11,8 @@ class App extends Component {
         this.state = {
           fieldA: '',
           fieldB: '',
+          outputA: '',
+          outputB: '',
           response: ''
         }
 
@@ -44,17 +46,18 @@ class App extends Component {
 
     handleSubmission = event => {
         event.preventDefault();
-        this.setState((prevState, props) => {
-            return { fieldA: '', fieldB: '' }
-        });
         this.fetchAPI(this.state.fieldA, this.state.fieldB)
             .then(response => response.json())
-            .then(result => {this.setState({ response: result })})
+            .then(result => { this.setState({ response: result }) })
             .catch(error => console.log(error))
+
+        this.setState((prevState, props) => {
+            return { fieldA: '', fieldB: '', outputA: prevState.fieldA, outputB: prevState.fieldB }
+        });
     }
 
   render() {
-      const { fieldA, fieldB, response } = this.state;
+      const { fieldA, fieldB, outputA, outputB, response } = this.state;
 
       return (
       <Container fluid>
@@ -105,7 +108,7 @@ class App extends Component {
                               >&#36; run semantic-search</Button>
                           </Form>
                           <div className="response">
-                              { response !== '' ? <Response response={ response }/> : <p></p> }
+                              { response !== '' ? <Response response={ response } outputA={ outputA } outputB={ outputB }  /> : <p></p> }
                           </div>
                       </div>
                   </Col>
