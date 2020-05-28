@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Response from './Response.js';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -48,7 +49,7 @@ class App extends Component {
         });
         this.fetchAPI(this.state.fieldA, this.state.fieldB)
             .then(response => response.json())
-            .then(result => {this.setState({ response: JSON.stringify(result) })})
+            .then(result => {this.setState({ response: result })})
             .catch(error => console.log(error))
     }
 
@@ -68,12 +69,12 @@ class App extends Component {
                       <div className="terminal">
                           <div className="title">
                               <p className="highlight">
-                                  Welcome to Kondo Playground
+                                  Semantic Search Playground
                               </p>
                               <p className="content">
 
                                   enter two sentences and we'll run it through <br/>
-                                  &#60;kondo-api&#62; so you can see the magic happen
+                                  our API for you to see the magic happen
                               </p>
                           </div>
                           <Form>
@@ -101,10 +102,10 @@ class App extends Component {
                                   block
                                   variant="outline-light"
                                   onClick={ this.handleSubmission }
-                              >&#36; kondo-search run</Button>
+                              >&#36; run semantic-search</Button>
                           </Form>
                           <div className="response">
-                              { response }
+                              { response !== '' ? <Response response={ response }/> : <p></p> }
                           </div>
                       </div>
                   </Col>
