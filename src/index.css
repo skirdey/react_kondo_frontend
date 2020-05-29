@@ -122,6 +122,15 @@ form {
   padding: 2rem;
 }
 
+ul.response {
+  padding: 0;
+}
+
+.response li {
+  list-style: none;
+  padding: .5rem 0;
+}
+
 /*Media for mobile responsive viewing*/
 @media only screen and (max-width: 600px) {
   .terminal-window {
