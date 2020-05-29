@@ -1,10 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: monospace;
+  font-family: 'PT Mono', monospace;
   font-size: 10pt;
-  background-color: #97cfca;
+  background-color: #E0E8F0;
   color: lightgray;
+}
+
+h1 {
+  margin: 3em 0 .5em;
+  color: #5a646e;
+  font-size: 3em;
+  font-weight: 900;
+  text-align: center;
+}
+
+h1 span {
+  font-size: 70%;
+  font-weight: 300;
+  opacity: .75;
+  padding: 0 10px;
+}
+
+.desc {
+  max-width: 500px;
+  color: #5a646e;
+  text-align: center;
+  letter-spacing: 1px;
+  margin: 0 auto 3em;
+}
+
+.desc a {
+  background: #30353A;
+  color: aquamarine;
+  font-weight: 900;
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+.desc a:hover {
+  background: aquamarine;
+  color: #30353A;
+  text-decoration: none;
 }
 
 button, input {
@@ -13,28 +52,25 @@ button, input {
   opacity: .9;
 }
 
-code {
-  font-family: monospace;
-  color: lightgray;
-  font-size: 10pt;
-}
-
 .title .highlight {
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  background: white;
-  color: #222;
+  background: #495057;
+  color: white;
   padding: .5rem;
   margin-bottom: 0;
+  letter-spacing: 1px;
+  font-size: 90%;
+  font-weight: 900;
 }
 
 .title .content {
   text-align: center;
   margin-top: 0;
   padding: 2rem 1.5rem;
-  border: dashed 1px white;
+  border: dotted 2px #495057;
   border-top: none;
+  letter-spacing: 1px;
 }
 
 form {
@@ -50,6 +86,7 @@ form {
   border-bottom: solid 1px #495057;
   color: white;
   font-size: 10pt;
+  letter-spacing: 1px;
 }
 
 .form-control:focus,
@@ -67,6 +104,7 @@ form {
 .btn {
   font-size: 10pt;
   border-radius: 0;
+  letter-spacing: 1px;
 }
 
 .btn:focus,
@@ -81,11 +119,10 @@ form {
   min-height: 30rem;
   margin: auto;
   position: relative;
-  top: 10.5rem;
 }
 
 .terminal-window .header {
-  background: #E0E8F0;
+  background: white;
   height: 1.875rem;
   border-radius: .5rem .5rem 0 0;
   padding-left: .625rem;
@@ -99,22 +136,15 @@ form {
   border-radius: .5rem;
 }
 
-.terminal-window .header .button.green {
-  background: #3BB662;
-}
-
-.terminal-window .header .button.yellow {
-  background: #E5C30F;
-}
-
-.terminal-window .header .button.red {
-  background: #E75448;
+.terminal-window .header .button {
+  background: #5a646e;
 }
 
 .terminal-window .terminal {
   color: white;
   background: #30353A;
   box-sizing: border-box;
+  border-radius: 0 0 .5em .5em;
   width: 100%;
   top: 1.875rem;
   bottom: 0;
@@ -122,69 +152,63 @@ form {
   padding: 2rem;
 }
 
-ul.response {
-  padding: 0;
+.response {
+  letter-spacing: 1px;
+  border-left: solid 1px white;
+  padding: 0 0 0 20px;
 }
 
 .response li {
   list-style: none;
-  padding: .5rem 0;
+  padding: .1em 0;
 }
 
-/*Media for mobile responsive viewing*/
+.response li span {
+  color: aquamarine;
+}
+
+.label {
+  text-transform: uppercase;
+  color: black;
+  background: white;
+  font-weight: 900;
+  font-size: 90%;
+  padding: 0 5px;
+}
+
 @media only screen and (max-width: 600px) {
+  h1 {
+    margin: 3em 0 1em 0;
+    font-size: 1.5em;
+  }
+
   .terminal-window {
     text-align: left;
-    width: 37.5vmin;
-    height: 22.5vmin;
-    border-radius: .625vmin;
     margin: auto;
     position: relative;
-    top: 30.5vmin;
   }
-}
-@media only screen and (max-width: 600px) {
-  .terminal-window header {
-    background: #E0E8F0;
-    height: 1.875vmin;
-    border-radius: .5vmin .5vmin 0 0;
-    padding-left: 1vmin;
+
+  .terminal-window {
+    padding: 1em;
   }
-}
-@media only screen and (max-width: 600px) {
-  .terminal-window header .button {
-    width: .75vmin;
-    height: .75vmin;
-    margin: .625vmin .25vmin 0 0;
-    display: inline-block;
-    border-radius: .5vmin;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .terminal-window header .button.green {
-    background: #3BB662;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .terminal-window header .button.yellow {
-    background: #E5C30F;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .terminal-window header .button.red {
-    background: #E75448;
-  }
-}
-@media only screen and (max-width: 600px) {
+
   .terminal-window .terminal {
     color: white;
-    font-size: .6875vmin;
+    font-size: 10pt;
     background: #30353A;
-    padding: .625vmin;
+    padding: 1rem;
     box-sizing: border-box;
     width: 100%;
     top: 1.875vmin;
     bottom: 0;
     overflow: auto;
+  }
+
+  .title .content {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .container-fluid {
+    padding: 0;
   }
 }

@@ -61,23 +61,36 @@ class App extends Component {
 
       return (
       <Container fluid>
+          <div>
+              <h1><span>&lt;</span>semantic-similarity<span>/&gt;</span></h1>
+              <p className="desc">
+                Playground front-end written as demonstration of the concepts introduced in the article
+                "Semantic Similarity Search at Scale" published <a href="#" target="_blank">here</a>
+              </p>
+          </div>
+
           <Container id="content">
               <Row>
-                  <Col md={{ span: 6, offset: 3 }} className="terminal-window">
+                  <Col
+                      xs={{ span: 12 }}
+                      md={{ span: 10, offset: 1 }}
+                      lg={{ span: 6, offset: 3 }}
+                      className="terminal-window"
+                  >
                       <div className="header">
-                          <div className="button green">&nbsp;</div>
-                          <div className="button yellow">&nbsp;</div>
-                          <div className="button red">&nbsp;</div>
+                          <div className="button">&nbsp;</div>
+                          <div className="button">&nbsp;</div>
+                          <div className="button">&nbsp;</div>
                       </div>
                       <div className="terminal">
                           <div className="title">
                               <p className="highlight">
-                                  Semantic Search Playground
+                                  <span>Semantic Similarity Playground</span>
                               </p>
                               <p className="content">
-
-                                  enter two sentences and we'll run it through <br/>
-                                  our API for you to see the magic happen
+                                  Submit two sentences and we'll run it through
+                                  our magical API that will show if the sentences
+                                  share semantic similarity.
                               </p>
                           </div>
                           <Form>
@@ -105,10 +118,14 @@ class App extends Component {
                                   block
                                   variant="outline-light"
                                   onClick={ this.handleSubmission }
-                              >&#36; run semantic-search</Button>
+                              >&#36; run semantic-similarity</Button>
                           </Form>
-                          <div className="response">
-                              { response !== '' ? <Response response={ response } outputA={ outputA } outputB={ outputB }  /> : <p></p> }
+                          <div>
+                              { response !== '' ? <Response
+                                  response={ response }
+                                  outputA={ outputA }
+                                  outputB={ outputB }
+                              /> : <span>&nbsp;</span> }
                           </div>
                       </div>
                   </Col>
