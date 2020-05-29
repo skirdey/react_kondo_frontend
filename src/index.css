@@ -9,6 +9,16 @@ body {
   color: lightgray;
 }
 
+::selection {
+  color: white;
+  background: aquamarine;
+}
+
+::-moz-selection {
+  color: white;
+  background: aquamarine;
+}
+
 h1 {
   margin: 3em 0 .5em;
   color: #5a646e;
@@ -36,7 +46,7 @@ h1 span {
   background: #30353A;
   color: aquamarine;
   font-weight: 900;
-  padding: 0 10px;
+  padding: 0 5px;
   text-decoration: none;
 }
 
@@ -117,7 +127,7 @@ form {
 .terminal-window {
   text-align: left;
   min-height: 30rem;
-  margin: auto;
+  margin: 0 auto 8em;
   position: relative;
 }
 
@@ -165,6 +175,7 @@ form {
 
 .response li span {
   color: aquamarine;
+  font-weight: 900;
 }
 
 .label {
@@ -177,18 +188,22 @@ form {
 }
 
 @media only screen and (max-width: 600px) {
+  body {
+    font-size: 12pt;
+  }
+
   h1 {
-    margin: 3em 0 1em 0;
-    font-size: 1.5em;
+    margin: 1em 0;
+    font-size: 2.5em;
+  }
+
+  .desc, h1 {
+    padding: 0 15px;
   }
 
   .terminal-window {
     text-align: left;
-    margin: auto;
     position: relative;
-  }
-
-  .terminal-window {
     padding: 1em;
   }
 
